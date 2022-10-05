@@ -1,0 +1,211 @@
+body {margin:0px;color:rgb(0,0,0);font-size:13px;background-color:rgb(255,255,255);}
+
+.demoContainer {
+background:rgb(255,255,255);margin:0px;padding:0px 0px 0px 0px;
+border-radius:0px;border:0px solid rgb(255,255,255);
+border-image:none;left:0px;top:0px;width:860px;
+height:100%;overflow:auto;vertical-align:top;
+min-height:580px;min-width:850px;
+box-shadow:0px 0px 0px rgba(0,0,0,0.07);-moz-border-radius:0px;-webkit-border-radius:0px;
+-webkit-box-shadow:0 0px 0px rgba(0,0,0,0.07);-moz-box-shadow:0 0px 0px rgba(0,0,0,0.07);
+}
+
+.menuNavi {
+background:none;
+padding:0px;
+border-radius:4px;
+top:0px;
+width:1042px !important;
+height:100%;
+min-width:150px !important;
+max-width:150px;
+-moz-border-radius:4px;
+-webkit-border-radius:4px;
+}
+
+.menuItem {
+background:rgb(255,255,255);
+clear:both;
+border-right-color:rgb(255,255,255);
+border-left-color:rgb(255,255,255);
+border-top-color:rgb(255,255,255);
+border-bottom-color:rgb(255,255,255);
+border-right-width:1px;
+border-left-width:1px;
+border-right-style:solid;
+border-left-style:solid;
+padding:17px 0px;
+list-style:none;
+padding:7px 0px 7px 30px;
+transition:background 0.3s ease-in-out,color 0.1s,padding-left 0.3s ease-in-out;
+text-align:left;color:rgb(63,63,63);
+line-height:20px;
+vertical-align:middle;
+ 
+border-top-width:medium;
+border-bottom-width:1px;
+border-top-style:none;
+border-bottom-style:solid;
+cursor:pointer;
+-webkit-transition:background 0.3s ease-in-out,color 0.1s ease 0s,padding-left 0.3s ease-in-out;
+-moz-transition:background 0.3s ease-in-out,color 0.1s ease 0s,padding-left 0.3s ease-in-out;
+}
+
+.menuItem a:link {
+margin:2px auto 0px;
+transition:color 0.3s,background 0.3s;
+color:inherit;
+font-family:Verdana,Arial,sans-serif;
+font-size:12px;
+font-style:normal;
+font-weight:normal;
+text-decoration:none;
+-webkit-transition:color 0.3s ease 0s,background 0.3s ease 0s;-moz-transition:color 0.3s ease 0s,background 0.3s ease 0s;
+-o-transition:color 0.3s ease 0s,background 0.3s ease 0s;
+}
+
+.menuItem a:visited {color:inherit;font-size:12px;text-decoration:none;margin-left:3px;}
+
+.funcmenu{
+margin-top: 10px;
+margin-bottom: 10px;    
+}
+
+.funcmenu a:link {
+margin-top: 10px;
+margin-bottom: 10px;    
+}
+
+.top {
+margin:0px auto;
+width:100%;height:100%;
+color:rgb(119,119,119);
+line-height:16px;
+overflow:hidden;
+font-family:Verdana,Arial,Helvetica,sans-serif;
+font-size:12px;
+min-height:50px;
+}
+.top td {margin:0px;padding:0px;border-collapse:collapse;border-spacing:0px;}
+.contentdiv {margin:0px auto 0px;width:1052px;height:100%;}
+.contenttable {width:840;margin-top:15px;margin-bottom:15px;border-collapse:collapse;table-layout:fixed;}
+
+.content {
+height:600px;
+padding-left:10px;
+margin-right:0px;
+max-height:600px;
+}
+
+.bwmbookContainer {
+background:rgb(255,255,255);
+margin:0px;padding:0px 0px 0px 0px;
+border-radius:2px;
+border:1px solid rgb(255,255,255);
+border-image:none;
+left:0px;
+top:0px;
+width:860px;
+height:100%;
+overflow:auto;
+vertical-align:top;
+min-height:600px;
+min-width:850px;
+/*box-shadow:0px 1px 4px rgba(0,0,0,0.07);*/
+-moz-border-radius:4px;
+-webkit-border-radius:4px;
+-webkit-box-shadow:0 1px 4px rgba(0,0,0,0.07);
+-moz-box-shadow:0 1px 4px rgba(0,0,0,0.07);
+}
+/* ==========================================================================================================================*/
+.hr0{height:1px;border:none;border-top:1px dashed #0066CC;}
+.hr1{height:1px;border:none;border-top:1px solid #555555;}
+.hr2{height:3px;border:none;border-top:3px double red;}
+.hr3{height:5px;border:none;border-top:5px ridge green;}
+.hr4{height:10px;border:none;border-top:10px groove skyblue;}
+.hr5{height:1px;border:none;border-top:1px gray;}
+.hr6{height:1px;border:none;border-top:1px dashed #a0a0a0;}
+.hr7{height:1px;border:none;border-top:1px solid #555555;}
+.hr8{height:3px;border:none;border-top:3px double red;}
+.hr9{height:5px;border:none;border-top:5px ridge green;}
+.hr10{height:10px;border:none;border-top:10px groove skyblue;}
+.hr11{height:1px;border:none;border-top:1px solid #CCCCCC;}
+
+/* ==========================================================================================================================*/
+table.tablecontainer{
+border:1px solid rgb(120,170,255);
+border-collapse:collapse;
+table-layout:fixed;
+width:860px;
+}
+table.tablecontainer tr{border:1px solid rgb(128,128,128);}
+table.tablecontainer td{border:1px solid rgb(128,128,128);}
+
+table.tablecontainer tr:nth-child(2n+1) {background-color:rgb(180,220,255);}
+table.tablecontainer tr:nth-child(2n) {background-color:rgb(255,255,255);}
+
+/* ==========================================================================================================================*/
+table.tablecommand{
+border:1px solid rgb(120,170,255);
+border-collapse:collapse;
+table-layout:fixed;
+width:860px;
+}
+table.tablecommand tr{border:1px solid rgb(128,128,128);}
+table.tablecommand td{border:1px solid rgb(128,128,128);}
+table.tablecommand tr:nth-child(2n+1) {background-color:rgb(180,220,255);}
+table.tablecommand tr:nth-child(2n) {background-color:rgb(180,220,255);}
+/* ==========================================================================================================================*/
+table.tableInnercommand{
+border:1px solid rgb(255,255,255);
+border-collapse:collapse;
+table-layout:fixed;
+width:500px;
+}
+table.tableInnercommand tr{border:1px solid rgb(180,220,255);}
+table.tableInnercommand td{border:1px solid rgb(180,220,255);width:140px;}
+table.tableInnercommand tr:nth-child(2n+1){background-color:rgb(180,220,255);}
+table.tableInnercommand tr:nth-child(2n){background-color:rgb(180,220,255);}
+/* ==========================================================================================================================*/
+table.reference {width:100%;border-collapse:collapse;}
+table.reference tr:nth-child(2n+1) {background-color:rgb(241,241,241);}
+table.reference tr:nth-child(2n) {background-color:rgb(255,255,255);}
+table.reference tr.fixzebra {background-color:rgb(241,241,241);}
+table.reference th {padding:3px;border:1px solid rgb(185,185,185);border-image:none;text-align:center;color:rgb(255,255,255);vertical-align:top;background-color:rgb(85,85,85);}
+table.reference th a:link {color:rgb(255,255,255);}
+table.reference th a:visited {color:rgb(255,255,255);}
+table.reference th a:hover {color:rgb(238,135,42);}
+table.reference th a:active {color:rgb(238,135,42);}
+table.reference td {padding:7px 5px;border:1px solid rgb(212,212,212);border-image:none;vertical-align:top;}
+/* ==========================================================================================================================*/
+table.tableInner{border:1px solid rgb(255,255,255);border-collapse:collapse;table-layout:fixed;width:840px;}
+table.tableInner tr{border:1px solid rgb(255,255,255);}
+table.tableInner td{border:1px solid rgb(255,255,255);}
+table.tableInner tr:nth-child(2n+1) {background-color:rgb(255,255,255);}
+table.tableInner tr:nth-child(2n) {background-color:rgb(255,255,255);}
+/* ==========================================================================================================================*/
+table.reference {width:100%;border-collapse:collapse;}
+table.reference tr:nth-child(2n+1) {background-color:rgb(241,241,241);}
+table.reference tr:nth-child(2n) {background-color:rgb(255,255,255);}
+table.reference tr.fixzebra {background-color:rgb(241,241,241);}
+table.reference th {padding:3px;border:1px solid rgb(185,185,185);border-image:none;text-align:center;color:rgb(255,255,255);vertical-align:top;background-color:rgb(85,85,85);}
+table.reference th a:link {color:rgb(255,255,255);}
+table.reference th a:visited {color:rgb(255,255,255);}
+table.reference th a:hover {color:rgb(238,135,42);}
+table.reference th a:active {color:rgb(238,135,42);}
+
+table.reference td {padding:7px 5px;border:1px solid rgb(212,212,212);border-image:none;vertical-align:top;}
+table.reference td.example_code {vertical-align:bottom;}
+
+/* ==========================================================================================================================*/
+table.refgroup {width:100%;border-collapse:collapse;}
+table.refgroup tr:nth-child(2n+1) {background-color:rgb(241,241,241);}
+table.refgroup tr:nth-child(2n) {background-color:rgb(255,255,255);}
+table.refgroup tr.fixzebra {background-color:rgb(241,241,241);}
+table.refgroup th {padding:3px;border:1px solid rgb(85,85,85);border-image:none;text-align:center;color:rgb(255,255,255);vertical-align:top;background-color:rgb(85,85,85);}
+table.refgroup th a:link {color:rgb(255,255,255);}
+table.refgroup th a:visited {color:rgb(255,255,255);}
+table.refgroup th a:hover {color:rgb(238,135,42);}
+table.refgroup th a:active {color:rgb(238,135,42);}
+table.refgroup td {padding:7px 5px;border:0px solid rgb(212,212,212);border-image:none;vertical-align:top;}
+table.refgroup td.example_code {vertical-align:bottom;}

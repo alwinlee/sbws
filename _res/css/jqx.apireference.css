@@ -1,0 +1,30 @@
+.documentation-option {
+	width: 100%; text-indent: 0px; font-family: Verdana,Arial,sans-serif; font-size: 13px; list-style-type: none; white-space: nowrap;
+}
+.documentation-option-description {
+	width: 880px; color: rgb(0, 0, 0); font-family: Verdana,Arial,sans-serif; font-size: 13px; cursor: text;
+}
+.documentation-code {
+	margin: 0px 0px 1em; color: rgb(85, 85, 85); font-family: Verdana,Arial,sans-serif; font-size: 13px; display: block; cursor: text;
+}
+.documentation-code strong {
+	color: rgb(0, 0, 0);
+}
+.documentation-option-type-click {
+	transition:color 0.3s; text-align: left; color: rgb(11, 85, 155); font-family: Verdana,Arial,sans-serif; font-size: 13px; cursor: pointer; -webkit-transition: color 0.3s ease 0s; -moz-transition: color 0.3s ease 0s; -o-transition: color 0.3s ease 0s;
+}
+.documentation-option-type-click:hover {
+	color: rgb(0, 162, 232); cursor: pointer;
+}
+pre {
+	padding: 5px; overflow: auto; max-width: 880px;
+}
+.documentation-table {
+	transition:0.3s; width: 100%; text-align: left; font-family: Verdana,Arial,sans-serif; font-size: 13px; vertical-align: top; float: left; border-collapse: separate; table-layout: fixed; border-spacing: 1px; -webkit-transition: all 0.3s ease 0s; -moz-transition: all 0.3s ease 0s; -o-transition: all 0.3s ease 0s;
+}
+.documentation-table th {
+	width: 33%; text-align: left; vertical-align: top; border-collapse: separate; border-spacing: 1px;
+}
+.documentation-table td {
+	width: 33%; text-align: left; vertical-align: top; border-collapse: separate; border-spacing: 1px;
+}

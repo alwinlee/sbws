@@ -173,8 +173,10 @@
   if ($numrows>0){
     while($row = mysqli_fetch_assoc($result_class)){
       $yes = false;
-      if (strpos($row["Class"], "18春") !== false){ $yes = true;}
-      if (strpos($row["Class"], "18秋") !== false){ $yes = true;}
+      if (strpos($row["Class"], "19春") !== false){ $yes = true;}
+      if (strpos($row["Class"], "19秋") !== false){ $yes = true;}
+      if (strpos($row["Class"], "20春") !== false){ $yes = true;}
+      if (strpos($row["Class"], "20秋") !== false){ $yes = true;}
       if (!$yes) {continue;}
       $classname=$row["Class"]."-".$row["OrgName"];
       $regioncode = '1A';

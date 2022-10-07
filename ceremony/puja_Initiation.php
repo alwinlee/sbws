@@ -175,7 +175,8 @@
   if ($numrows>0){
     while($row = mysqli_fetch_assoc($result_class)){
         $yes = false;
-        if (strpos($row["Class"], "18備") !== false){ $yes = true; }
+        if (strpos($row["Class"], "19備") !== false){ $yes = true; }
+        if (strpos($row["Class"], "20備") !== false){ $yes = true; }
         if (!$yes) {continue;}
         $classname=$row["Class"]."-".$row["OrgName"];
         $regioncode = '1A';

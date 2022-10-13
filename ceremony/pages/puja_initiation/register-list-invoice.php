@@ -69,13 +69,13 @@
     while($traffic_row = mysqli_fetch_array($pujatraffic_result, MYSQLI_ASSOC))
     {
         $traffinfo1[$i][0]=$traffic_row["traffid"];
-        $traffinfo1[$i][1]=$traffic_row["traffname"]."[12/13(日)-上午場]";
+        $traffinfo1[$i][1]=$traffic_row["traffname"]."[11/20(日)-上午場]";
         $traffinfo1[$i][2]=0;
         $traffinfo1[$i][3]="";
         $traffinfo1[$i][4]=0;
 
         $traffinfo2[$i][0]=$traffic_row["traffid"];
-        $traffinfo2[$i][1]=$traffic_row["traffname"]."[12/13(日)-下午場]";;
+        $traffinfo2[$i][1]=$traffic_row["traffname"]."[11/20(日)-下午場]";;
         $traffinfo2[$i][2]=0;
         $traffinfo2[$i][3]="";
         $traffinfo2[$i][4]=0;

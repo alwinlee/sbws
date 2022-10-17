@@ -75,7 +75,7 @@
         $traffinfo1[$i][4]=0;
 
         $traffinfo2[$i][0]=$traffic_row["traffid"];
-        $traffinfo2[$i][1]=$traffic_row["traffname"]."[11/20(日)-上午場]";
+        $traffinfo2[$i][1]=$traffic_row["traffname"]."[11/20(日)-下午場]";
         $traffinfo2[$i][2]=0;
         $traffinfo2[$i][3]="";
         $traffinfo2[$i][4]=0;

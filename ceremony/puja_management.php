@@ -45,7 +45,7 @@
 <script src="../_res/js/js-xlsx/FileSaver.js"></script>
 <script src="../_res/js/moment.min.js"></script>
 
-<script src="./js/puja_management.js?{45D8DB81-FCF5-415B-8BBA-CDF5C9B73952}" type="text/javascript"></script>
+<script src="./js/puja_management.js?{D95D545E-FD04-40A2-AA81-49EBB2800303}" type="text/javascript"></script>
 
 <META name="GENERATOR" content=""></HEAD>
 <DIV class="top" id="pageTop"></DIV>

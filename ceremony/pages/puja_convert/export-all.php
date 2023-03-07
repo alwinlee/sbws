@@ -194,17 +194,17 @@
     $objWorkSheet->getStyle($item)->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
     $item=$col[$idx]."4";
     // $objWorkSheet->setCellValue($item,"【1】：上午場");
-    $objWorkSheet->setCellValue($item,"上午場");
+    $objWorkSheet->setCellValue($item,"下午場");
     $objWorkSheet->getStyle($item)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
     $objWorkSheet->getStyle($item)->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 
     $idx++;$item=$col[$idx]."3";
-    $objWorkSheet->setCellValue($item,$item1);
+    $objWorkSheet->setCellValue($item,$item2);
     $objWorkSheet->getStyle($item)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
     $objWorkSheet->getStyle($item)->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
     $item=$col[$idx]."4";
     // $objWorkSheet->setCellValue($item,"【2】：下+晚場");
-    $objWorkSheet->setCellValue($item,"下午場");
+    $objWorkSheet->setCellValue($item,"上午場");
     $objWorkSheet->getStyle($item)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
     $objWorkSheet->getStyle($item)->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 

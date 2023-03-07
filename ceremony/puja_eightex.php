@@ -187,15 +187,22 @@
     echo "<td style='width:85px'><select style='width:109px;' id='classid' class='classid' name='classid'>";
     echo "<option value='-'>-</option>";
 
-    $substring1="宗";
-    $substring2=(date('Y')-2002)."備";$substring3=(date('Y')-2003)."備";
-    $substring4=(date('Y')-2004)."備";
-    $substring5="17備001";
-    $substring6="17備006";
+    $substring1=['15增', '16增', '17增', '18增', '19增', '20增', '21增', '22增', '23增', '15春', '16春', '17春', '18春', '19春', '20春', '21春'];
+    $substring2=['15春', '16春', '17春', '18春', '19春', '20春', '21春'];
+
     //$substring3=(date('Y')-2000)."春";$substring4=(date('Y')-2000)."秋";
     if ($numrows>0){
         if ($ceremAuth[4]>=1){
             while($row = mysqli_fetch_assoc($result_class)){
+                $yes = false;
+                for ($i = 0; $i < count($substring1); $i++) {
+                    if (strpos($row["Class"], $substring1[$i]) !== false){
+                        $yes = true;
+                        break;
+                    }
+                }
+                if (!$yes) {continue;}
+
                 $classname=$row["Class"]."-".$row["OrgName"];
                 $regioncode = '1A';
                 if ($row["ParentOrgId"] == "13" || $row["OrgId"] == "13"){
@@ -205,6 +212,14 @@
             }
         } else {
             while($row = mysqli_fetch_assoc($result_class)) {
+                $yes = false;
+                for ($i = 0; $i < count($substring1); $i++) {
+                    if (strpos($row["Class"], $substring1[$i]) !== false){
+                        $yes = true;
+                        break;
+                    }
+                }
+                if (!$yes) {continue;}
                 $classname=$row["Class"]."-".$row["OrgName"];
                 $regioncode = '1A';
                 if ($row["ParentOrgId"] == "13" || $row["OrgId"] == "13"){

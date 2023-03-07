@@ -383,7 +383,7 @@ function showtable(data,classid,classname,area,region,classfullname)
   // Head ROW1
   var table1="<table class=\"reference\" id=\"fixheadertbl1\" style=\"width:800px\" align=\"center\">";
   table1+="<thead><tr>";
-  table1+="<th></th><th></th><th></th><th></th><th colspan=\"3\">參加場次(皈依+圓根)</th>";
+  table1+="<th></th><th></th><th></th><th></th><th colspan=\"3\">參加場次</th>";
   table1+="<th></th>";
   table1+="<th></th><th></th>";
   if(payitem=="YES"){table1+="<th></th>";}

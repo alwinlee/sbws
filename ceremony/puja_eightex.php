@@ -20,7 +20,7 @@
     $curYear = GetCurrentYear();
 
 
-    $pujaid="puja_wisdom2_3";
+    $pujaid="puja_eightex";
     $curr=date("Y-m-d");
     $ceremAuth=$_SESSION["ceremonyAuth"];//echo $ceremAuth;
     $checkLevel=3;
@@ -28,7 +28,7 @@
     $volunteerinfo="NO";
     $leaderinfo="YES";//"YES"; //是否要一起找出幹部的母班
     $detailinfo="YES";//匯出使用
-    $pujatitle=($year."年 淨智營第二期");
+    $pujatitle=($year."年 八關齋戒");
     // 窗口
     $areauser=false;$user_name=$_SESSION["username"];
     //if ($userlevel==3||$userlevel>=9){if(($areakey!="") && ($areakey!="*")&&($user_name!="mgr3A")){$areauser=true;}}
@@ -44,9 +44,10 @@
     $pujaenddate=$curr;
     $subMenuItem=360;
 
-    $enddate="2019-01-01";
-    $mgrenddate="2019-01-01";
-    $areaenddate="2019-01-01";
+    $enddate="2015-01-01";
+    $mgrenddate="2015-01-01";
+    $areaenddate="2015-01-01";
+    $puja_date_title="10/1(六)~10/2(日)";
     $tbname=$pujaid;
     $trafftbname=$pujaid;
     $item=Array('-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-');
@@ -97,6 +98,12 @@
 
             $otherinfo=$puja_row["statisticphp"];//其他訊息
             if ($otherinfo!=""){
+                $puja_date_title = $otherinfo;
+                $datex=explode("~",$puja_date_title);
+                if (count($datex) > 1){
+                    $puja_date1 = $datex[0];
+                    $puja_date2 = $datex[1];
+                }
                 $itemx=explode("~",$otherinfo);
                 for($i=0;$i<count($itemx);$i++){
                     $item[$i]=$itemx[$i];
@@ -134,7 +141,7 @@
 <SCRIPT src="../_res/js/analytics.js" type="text/javascript"></SCRIPT>
 <SCRIPT src="../_res/js/jquery-2.1.1.min.js" type="text/javascript"></SCRIPT>
 <SCRIPT src="../_res/js/jquery.fixedheadertable.js"></SCRIPT>
-<SCRIPT src="./js/puja_wisdom2_3.js?{2249ADF6-F1F0-49EF-AA9F-470B457BBCB5}" type="text/javascript"></SCRIPT>
+<SCRIPT src="./js/puja_eightex.js?{45D8DB81-FCF5-415B-8BBA-CDF5C9B73952}" type="text/javascript"></SCRIPT>
 <META name="GENERATOR" content=""></HEAD>
 <div class="top" id="pageTop"></div>
 <div class="rc-all contentdiv">
@@ -180,22 +187,15 @@
     echo "<td style='width:85px'><select style='width:109px;' id='classid' class='classid' name='classid'>";
     echo "<option value='-'>-</option>";
 
-    $substring1=(date('Y')-2000)."春";
-    $substring2=(date('Y')-2000)."秋";
-    $substring3=(date('Y')-2001)."春";
-    $substring4=(date('Y')-2001)."秋";
-    $substring5=(date('Y')-2002)."秋";
+    $substring1="宗";
+    $substring2=(date('Y')-2002)."備";$substring3=(date('Y')-2003)."備";
+    $substring4=(date('Y')-2004)."備";
+    $substring5="17備001";
+    $substring6="17備006";
+    //$substring3=(date('Y')-2000)."春";$substring4=(date('Y')-2000)."秋";
     if ($numrows>0){
         if ($ceremAuth[4]>=1){
             while($row = mysqli_fetch_assoc($result_class)){
-                $yes = true;
-                if (strpos($row["Class"], $substring1) !== false){ $yes = false; }
-                if (strpos($row["Class"], $substring2) !== false){ $yes = false; }
-                if (strpos($row["Class"], $substring3) !== false){ $yes = false; }
-                if (strpos($row["Class"], $substring4) !== false){ $yes = false; }
-                if (strpos($row["Class"], $substring5) !== false){ $yes = false; }
-                //if (strpos($row["Class"], $substring6) !== false){ $yes = true; }
-                if (!$yes) {continue;}
                 $classname=$row["Class"]."-".$row["OrgName"];
                 $regioncode = '1A';
                 if ($row["ParentOrgId"] == "13" || $row["OrgId"] == "13"){
@@ -205,14 +205,6 @@
             }
         } else {
             while($row = mysqli_fetch_assoc($result_class)) {
-                $yes = true;
-                if (strpos($row["Class"], $substring1) !== false){ $yes = false; }
-                if (strpos($row["Class"], $substring2) !== false){ $yes = false; }
-                if (strpos($row["Class"], $substring3) !== false){ $yes = false; }
-                if (strpos($row["Class"], $substring4) !== false){ $yes = false; }
-                if (strpos($row["Class"], $substring5) !== false){ $yes = false; }
-                //if (strpos($row["Class"], $substring6) !== false){ $yes = true; }
-                if (!$yes) {continue;}
                 $classname=$row["Class"]."-".$row["OrgName"];
                 $regioncode = '1A';
                 if ($row["ParentOrgId"] == "13" || $row["OrgId"] == "13"){
@@ -228,13 +220,12 @@
         mysqli_close($conx);
     }
     echo "<td style='width:400px' align='left' colspan='2'><input id='query' type='button' name='query' value='報名表'>";
-    echo "&nbsp;<input id='prtinvoice' class='prtinvoice' type='button' name='prtinvoice' value='印繳費單'>";
-    echo "&nbsp;<input id='paylist' class='paylist' type='button' name='paylist' value='已繳費名冊'>";
+    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id='prtinvoice' class='prtinvoice' type='button' name='prtinvoice' value='列印繳費單'>";
+    echo "&nbsp;&nbsp;<input id='paylist' class='paylist' type='button' name='paylist' value='已繳費名冊'>";
 
     if ($ceremAuth[4]>=1){
         echo "&nbsp;&nbsp;<input id='export' type='button' name='export' value='匯出總表'>";
         echo "&nbsp;&nbsp;<input id='classexport' type='button' name='classexport' value='班級統計'>";
-        //if ($curr>$pujaenddate){echo "&nbsp;&nbsp;<input id='exportcancel' type='button' name='export' value='取消名單'>";}
     }
     echo "</td></tr>";
 	//echo "<tr><td colspan='5'><div id='msg'></div></td></tr>";//show debug info
@@ -257,7 +248,7 @@
     echo "<input type='hidden' id='tb' class='tb' name='tb' value='".$tbname."' />";
     echo "<input type='hidden' id='trafftb' class='trafftb' name='trafftb' value='".$trafftbname."' />";
     echo "<input type='hidden' id='sub' class='sub' name='sub' value='".$pujaid."' />";
-    echo "<input type='hidden' id='Major' class='Major' name='Major' value='".($leadersupport ? "NO":"YES")."' />";//Major : YES 母班報名
+    echo "<input type='hidden' id='Major' class='Major' name='Major' value='".($leadersupport ? "YES":"NO")."' />";//Major : YES 母班報名
     echo "<input type='hidden' id='DetailInfo' class='DetailInfo' name='DetailInfo' value='YES' />";
 
     if ($ceremAuth[4]>=1) {
@@ -267,7 +258,7 @@
         $regioncode="*";
         if (isset($_SESSION["keyofareaid"])&&$_SESSION["keyofareaid"]!=""){$regioncode=$_SESSION["keyofareaid"];}
         echo "<input type='hidden' id='regioncode' class='regioncode' name='regioncode' value='".$regioncode."' />";
-    } else {
+    }else{
         echo "<input type='hidden' id='payitem' class='payitem' name='payitem' value='NO' />";
         echo "<input type='hidden' id='payerid' class='payerid' name='payerid' value='' />";
         echo "<input type='hidden' id='payername' class='payername' name='payername' value='' />";
@@ -282,26 +273,6 @@
     if ($currDate>$pujaenddate){echo "<input type='hidden' id='endjoin' class='endjoin' name='endjoin' value='YES' />";}
     else{echo "<input type='hidden' id='endjoin' class='endjoin' name='endjoin' value='NO' />";}
 
-    $currY=date('Y');$currM=date('m');$currD=date('d');
-    if ($ceremAuth[4]>=1) {
-        echo "<input type='hidden' id='joinitem1' class='joinitem1' name='joinitem1' value='YES' />";
-        echo "<input type='hidden' id='joinitem2' class='joinitem2' name='joinitem2' value='YES' />";
-        echo "<input type='hidden' id='joinitem3' class='joinitem3' name='joinitem3' value='YES' />";
-    } else {
-        echo "<input type='hidden' id='joinitem1' class='joinitem1' name='joinitem1' value='NO' />";
-        echo "<input type='hidden' id='joinitem2' class='joinitem2' name='joinitem2' value='YES' />";
-        echo "<input type='hidden' id='joinitem3' class='joinitem3' name='joinitem3' value='YES' />";
-        //if ($currY>2018||$currM>5||($currM==5&&$currD>21))
-        //{echo "<input type='hidden' id='joinitem1' class='joinitem1' name='joinitem1' value='NO' />";}
-        //else{echo "<input type='hidden' id='joinitem1' class='joinitem1' name='joinitem1' value='YES' />";}
-
-        //if ($currY>2035||$currM>11||($currM==11&&$currD>13))
-        //{echo "<input type='hidden' id='joinitem2' class='joinitem2' name='joinitem2' value='YES' />";}
-        //else{echo "<input type='hidden' id='joinitem2' class='joinitem2' name='joinitem2' value='YES' />";}
-    }
-    echo "<input type='hidden' id='tagnotjoinitem1' class='tagnotjoinitem1' name='tagnotjoinitem1' value='NO' />";
-    echo "<input type='hidden' id='tagnotjoinitem2' class='tagnotjoinitem2' name='tagnotjoinitem2' value='NO' />";
-    echo "<input type='hidden' id='tagnotjoinitem3' class='tagnotjoinitem3' name='tagnotjoinitem3' value='NO' />";
     $useMobile="NO";
     if ($detectMobile->isMobile()&&$detectMobile->isTablet()==false){$useMobile="YES";}
     echo "<input type='hidden' id='mbdevice' class='mbdevice' name='mbdevice' value='".$useMobile."' />";
@@ -335,7 +306,9 @@
     echo "<input type='hidden' id='day5title' class='day5title' name='day5title' value='".$day5title."' />";
     echo "<input type='hidden' id='day6title' class='day6title' name='day6title' value='".$day6title."' />";
     echo "<input type='hidden' id='day7title' class='day7title' name='day7title' value='".$day7title."' />";
-    echo "<input type='hidden' id='joinplace' class='joinplace' name='joinplace' value='-;左營中心;鳳仁教室;圓明寺;中正教室;小港教室;旗山教室;屏東大學;台東教室;澎湖教室;高雄學苑;' />";
+    echo "<input type='hidden' id='pujadatetitle' class='pujadatetitle' name='pujadatetitle' value='".$puja_date_title ."' />";
+    echo "<input type='hidden' id='pujadate1' class='pujadate1' name='pujadate1' value='".$puja_date1 ."' />";
+    echo "<input type='hidden' id='pujadate2' class='pujadate2' name='pujadate2' value='".$puja_date2 ."' />";
 ?>
 <DIV>
 </TD></TR>

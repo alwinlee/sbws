@@ -142,9 +142,9 @@
 
             if (($row["day"]%10)>=1&&count($trafflist)>=1)//第一天
             {
-				$joinday=$item3."梯";
-				if($row["day"]==1){$joinday=$item1."梯";}
-				else if($row["day"]==2){$joinday=$item2."梯";}
+				$joinday=$item3;
+				if($row["day"]==1){$joinday=$item1;}
+				else if($row["day"]==2){$joinday=$item2;}
 
                 for($j = 0; $j < $iSize1; $j++)
                 {

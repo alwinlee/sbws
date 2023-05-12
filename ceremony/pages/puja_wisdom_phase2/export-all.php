@@ -108,7 +108,7 @@
         $sql  = 'select a.*, b.PhoneNo_H as TEL, b.PhoneNo_C as CP ';
         $sql .= 'from `'.$table_name.'` as a  left join `studentinfo` as b on a.STU_ID=b.stuid ';
         $sql .= 'where (`day`> 0) ';
-        $sql .= 'ORDER BY `CLS_ID` ASC, a.sex DESC,`STU_ID` ASC;';
+        $sql .= 'ORDER BY `CLS_ID` ASC, `titleid` DESC, a.sex DESC,`STU_ID` ASC;';
     } else {
         $Car=false;
         $areakey="";
@@ -122,9 +122,9 @@
         }
         $areakey=" AND (".$sqlstring.")";
         $sql  = 'select a.*, b.PhoneNo_H as TEL, b.PhoneNo_C as CP ';
-        $sql .= 'from `'.$table_name.'` as a  left join `studentinfo` as b on a.STU_ID=b.stuid ';
+        $sql .= 'from `'.$table_name.'` as a left join `studentinfo` as b on a.STU_ID=b.stuid ';
         $sql .= 'where ((`day`> 0 AND `titleid`<5)  '.$areakey.')';
-        $sql .= 'ORDER BY `CLS_ID` ASC, a.sex DESC,`STU_ID` ASC;';
+        $sql .= 'ORDER BY `CLS_ID` ASC, `titleid` DESC, a.sex DESC, `STU_ID` ASC;';
     }
 
     $result=mysqli_query($con,$sql);
@@ -160,7 +160,8 @@
     $xlstitle=array("序號","學員代號","大組","組別","班級","職稱","姓名","母班","性別","電話",
                     "","","","","","備註","身份(僅四種)","公司單位","職稱","","","","","","","","搭車代號","車資","電話(宅)","電話(手機)");
 
-    $xlstitleW=array(6,16,6,8,24,8,8,24,8,8,10,10,10,10,10,10,10,10,10,8,8,8,10,10,10,10,10,10,20,20,10,10);
+    // $xlstitleW=array(6,16,6,8,24,8,8,24,8,8,10,10,10,10,10,10,10,10,10,8,8,8,10,10,10,10,10,10,20,20,10,10);
+    $xlstitleW=array(6,16,0,0,24,8,8,24,8,8,10,10,10,10,10,16,0,0,0,8,8,0,0,10,10,10,10,10,20,20,10,10);
     $dateCurr=date('Y');
     $jobtype=array('V00'=>'-','V01'=>'教育','V02'=>'醫護','V03'=>'公職','V04'=>'農業','V05'=>'工業','V06'=>'建築業','V07'=>'商業','V08'=>'服務業','V09'=>'軍警','V10'=>'自由業','V11'=>'學生','V12'=>'家管','V13'=>'無','V14'=>'退休','V99'=>'其他');
     $edutype=array('D0'=>'-','D1'=>'國小','D2'=>'國中','D3'=>'高中職','D4'=>'專科','D5'=>'大學','D6'=>'碩士','D7'=>'博士','D8'=>'不識字','D9'=>'識字');
@@ -191,9 +192,9 @@
     $objWorkSheet->getStyle("T3")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
     $objWorkSheet->getStyle("T3")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 
-    $objWorkSheet->setCellValue("T4",$item1." 梯");$objWorkSheet->setCellValue("T5","-");
-    $objWorkSheet->setCellValue("U4",$item2." 梯");$objWorkSheet->setCellValue("U5","-");
-    $objWorkSheet->setCellValue("V4",$item3." 梯");$objWorkSheet->setCellValue("V5","-");
+    $objWorkSheet->setCellValue("T4",$item1);$objWorkSheet->setCellValue("T5","-");
+    $objWorkSheet->setCellValue("U4",$item2);$objWorkSheet->setCellValue("U5","-");
+    $objWorkSheet->setCellValue("V4",$item3);$objWorkSheet->setCellValue("V5","-");
     $objWorkSheet->setCellValue("W4","---");$objWorkSheet->setCellValue("W5","---");
     $objWorkSheet->setCellValue("X4","正行");
     $objWorkSheet->setCellValue("Y4","重培");
@@ -485,7 +486,7 @@
                      ->setCellValue($col[2].$iRow, "")
                      ->setCellValue($col[3].$iRow, "")
                      ->setCellValue($col[4].$iRow,$curcls)
-                     ->setCellValue($col[5].$iRow, "")
+                     ->setCellValue($col[5].$iRow,$row["title"])
                      ->setCellValue($col[6].$iRow,$row["name"])
                      ->setCellValue($col[7].$iRow,$mainclass)
                      ->setCellValue($col[8].$iRow,$row["sex"])
@@ -521,7 +522,7 @@
     $iRow+=1;
 
     // 參加人數, 車資, 繳費 總計
-    $sumitem=array($col[14],$col[15],$col[16],$col[17],$col[18],$col[19],$col[20],$col[22],$col[23],$col[24],$col[25],$col[26],$col[27]);
+    $sumitem=array($col[10],$col[11],$col[12],$col[13],$col[14],$col[18],$col[19],$col[20],$col[21],$col[22],$col[23],$col[24],$col[25]);
     for($w=0;$w<count($sumitem);$w++)
     {
         $item="=SUM(".$sumitem[$w].($top+$roundcnt).":".$sumitem[$w].($iRow-1).")";

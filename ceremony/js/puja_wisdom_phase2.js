@@ -401,7 +401,17 @@ function showtable(data,classid,classname,area,region,classfullname){
     var trafftable2=trafftable[1].split('|');
 
     var vCare=["-", "行動不便", "懷孕", "氣喘心臟", "打鼾", "其他症狀"];
-    var vAttend = [{value: 0, name: '不參加'}, {value: 1, name: '第 69 梯'},];
+    var vAttend = [{value: 0, name: '不參加'}];
+
+    if (item1) {
+        vAttend.push({value: 1, name: item1 });
+    }
+    if (item2) {
+        vAttend.push({value: 2, name: item2 });
+    }
+    if (item3) {
+        vAttend.push({value: 3, name: item3 });
+    }
 
     var bPaid=false;
     var payitem=$('#payitem').val();//if ($('.paid').val()=="YES"){bPaid=true;}//是否要顯示繳費項目

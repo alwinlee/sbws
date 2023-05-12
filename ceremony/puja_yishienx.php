@@ -99,7 +99,7 @@
 <script src="../_res/js/analytics.js" type="text/javascript"></script>
 <script src="../_res/js/jquery-2.1.1.min.js" type="text/javascript"></script>
 <script src="../_res/js/jquery.fixedheadertable.js"></script>
-<script src="./js/puja_yishienx.js?{2249ADF6-F1F0-49EF-AA9F-470B457BBCB5}" type="text/javascript"></script>
+<script src="./js/puja_yishienx.js?{E881ED85-2ECC-45C7-8B04-4E26BBE18D95}" type="text/javascript"></script>
 
 <meta name="GENERATOR" content=""></head>
 <div class="top" id="pageTop"></div>

@@ -134,7 +134,7 @@
 <SCRIPT src="../_res/js/analytics.js" type="text/javascript"></SCRIPT>
 <SCRIPT src="../_res/js/jquery-2.1.1.min.js" type="text/javascript"></SCRIPT>
 <SCRIPT src="../_res/js/jquery.fixedheadertable.js"></SCRIPT>
-<SCRIPT src="./js/puja_wisdom_3.js?{2249ADF6-F1F0-49EF-AA9F-470B457BBCB5}" type="text/javascript"></SCRIPT>
+<SCRIPT src="./js/puja_wisdom_3.js?{E881ED85-2ECC-45C7-8B04-4E26BBE18D95}" type="text/javascript"></SCRIPT>
 <META name="GENERATOR" content=""></HEAD>
 <div class="top" id="pageTop"></div>
 <div class="rc-all contentdiv">

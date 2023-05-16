@@ -78,7 +78,7 @@
         $sql .= "    select * ";
         $sql .= "    from `bwsouthdb`.`".$tbname."` ";
         $sql .= "    where (`CLS_ID`='".$classid."' AND `titleid`>=0 AND `titleid`<5) ";
-        $sql .= ") AS A JOIN `bwsouthdb`.`wisdom_m1` AS B ON A.STU_ID = B.STU_ID ";
+        $sql .= ") AS A JOIN `bwsouthdb`.`wisdom_m1` AS B ON (A.CLS_ID = B.CLS_ID AND A.STU_ID = B.STU_ID)";
         $sql .= "ORDER BY A.titleid DESC, A.Sex DESC, A.STU_ID ASC;";
         // $sql="select * from `bwsouthdb`.`".$tbname."` WHERE (`CLS_ID`='".$classid."' AND `titleid`>=0 AND `titleid`<5) ORDER BY titleid DESC, Sex DESC, STU_ID ASC";
     } else {
@@ -86,7 +86,7 @@
         $sql .= "    select * ";
         $sql .= "    from `bwsouthdb`.`".$tbname."` ";
         $sql .= "    where (`CLS_ID`='".$classid."' AND `titleid` >= 0) ";
-        $sql .= ") AS A JOIN `bwsouthdb`.`wisdom_m1` AS B ON A.STU_ID = B.STU_ID ";
+        $sql .= ") AS A JOIN `bwsouthdb`.`wisdom_m1` AS B ON (A.CLS_ID = B.CLS_ID AND A.STU_ID = B.STU_ID)";
         $sql .= "ORDER BY A.titleid DESC, A.Sex DESC, A.STU_ID ASC;";
         //$sql="select * from `bwsouthdb`.`".$tbname."` WHERE (`CLS_ID`='".$classid."' AND `titleid`>=0 ) ORDER BY titleid DESC, Sex DESC, STU_ID ASC";
     }

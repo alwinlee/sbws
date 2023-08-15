@@ -44,6 +44,7 @@
         var allsqlcmd=""; var sqlcmd=""; var joinday=0; var regdate=""; var paydate=""; var regnewdate=""; var paynewdate=""; var payernewid=""; var payernewname="";
 
         var clssqlcmd=",`classname`=&#&#"+clsname+"&#&#,`CLS_ID`=&#&#"+clsid+"&#&#,`area`=&#&#"+clsarea+"&#&#,`areaid`=&#&#"+clsregion+"&#&#,`classfullname`=&#&#"+clsfullname+"&#&# ";//更新班級資料
+        var contact = '';
         for(i=1;i<=nMemberCnt;i++) {
             bPay=false;
             lock=$('#idx_'+i).attr('lock');
@@ -52,7 +53,8 @@
                 txtMemo=$('#memo_'+i).val();//備註
                 specialcase=$('#specialcase_'+i).val();
                 tel=$('#tel_'+i).val();
-                sqlcmd="UPDATE `"+tbname+"` "+"SET `memo`=&#&#"+txtMemo+"&#&#, `specialcase`=" + specialcase + ", `tel`=&#&#"+tel+"&#&#";
+                contact=$('#contact_'+i).val();
+                sqlcmd="UPDATE `"+tbname+"` "+"SET `memo`=&#&#"+txtMemo+"&#&#, `specialcase`=" + specialcase + ", `tel`=&#&#"+tel+"&#&#" + ", `contact`=&#&#"+contact+"&#&#";
                 sqlcmd+=clssqlcmd;
                 sqlcmd+=" WHERE `idx`="+idx;
                 allsqlcmd+=sqlcmd;allsqlcmd += ";"; //allsqlcmd+="<br>";//debug
@@ -83,7 +85,7 @@
             txtMemo=$('#memo_'+i).val();//備註
             specialcase=$('#specialcase_'+i).val();
             tel=$('#tel_'+i).val();
-
+            contact=$('#contact_'+i).val();
             //考慮 lock, paid, pay, cost if(bPay){paid=fee;}
             if (bPaid==true){//管理窗口
                 lock=0;
@@ -101,12 +103,12 @@
                 sqlcmd="UPDATE `"+tbname+"` "+"SET `day`="+joinday+",`traff`=&#&#"+traff+"&#&#,`traffReal`=&#&#"+traffReal+"&#&#,`traffCnt`="+traffCnt+",`traffRealCnt`="+traffRealCnt+",";
                 sqlcmd+="`cost`="+fee+",`lock`="+lock+",`pay`="+paid+",`regdate`=&#&#"+regnewdate+"&#&#,`paydate`=&#&#"+paynewdate+"&#&#,";
                 sqlcmd+="`paybyid`=&#&#"+payernewid+"&#&#,`paybyname`=&#&#"+payernewname+"&#&#,`memo`=&#&#"+txtMemo+"&#&#,";
-                sqlcmd+="`specialcase`="+specialcase+",`tel`=&#&#"+tel+"&#&#";
+                sqlcmd+="`specialcase`="+specialcase+",`tel`=&#&#"+tel+"&#&#"+",`contact`=&#&#"+contact+"&#&#";
                 sqlcmd+=clssqlcmd;
                 sqlcmd+=" WHERE `idx`="+idx;
             }else{//幹部一般報名
                 sqlcmd="UPDATE `"+tbname+"` "+"SET `day`="+joinday+",`traff`=&#&#"+traff+"&#&#,`traffReal`=&#&#"+traffReal+"&#&#,`traffCnt`="+traffCnt+",`traffRealCnt`="+traffRealCnt+",`cost`="+fee+",`regdate`=&#&#"+regnewdate+"&#&#,`memo`=&#&#"+txtMemo+"&#&#,";
-                sqlcmd+="`specialcase`="+specialcase+",`tel`=&#&#"+tel+"&#&#";
+                sqlcmd+="`specialcase`="+specialcase+",`tel`=&#&#"+tel+"&#&#"+",`contact`=&#&#"+contact+"&#&#";
                 sqlcmd+=clssqlcmd;
                 sqlcmd+=" WHERE `idx`="+idx;
             }
@@ -354,7 +356,7 @@ function showtable(data,classid,classname,area,region,classfullname) {
     var vCare = [{value: 0, name: '-'}, {value: 1, name: '行動不便'}, {value: 2, name: '懷孕'},
                  {value: 3, name: '氣喘心臟'}, {value: 4, name: '打鼾'}, {value: 5, name: '其他症狀'}];
 
-    var vAttend = [{value: 0, name: '不參加'}, {value: 1, name: '04.08-09'}, {value: 2, name: '04.15-16'}, {value: 3, name: '04.22-23'}, ];
+    var vAttend = [{value: 0, name: '不參加'}, {value: 1, name: '10.07-08'} ];
 
     let table = '';
     table += '<table>';
@@ -364,17 +366,17 @@ function showtable(data,classid,classname,area,region,classfullname) {
     table += '    <th style="width:30px;border: 1px solid #fff;padding: 16px 0;">序</th>';
     table += '    <th style="width:80px;border: 1px solid #fff;padding: 16px 0;">姓名</th>';
     table += '    <th style="width:55px;border: 1px solid #fff;padding: 16px 0;">身份</th>';
-    table += '    <th style="width:100px;border: 1px solid #fff; padding: 4px 0;">參加梯次</th>';
-    table += '    <th style="width:170px;border: 1px solid #fff;padding: 16px 0;">車次</th>';
+    table += '    <th style="width:90px;border: 1px solid #fff; padding: 4px 0;">參加梯次</th>';
+    table += '    <th style="width:160px;border: 1px solid #fff;padding: 16px 0;">車次</th>';
     table += '    <th style="width:40px;border: 1px solid #fff;padding: 16px 0;">車資</th>';
     table += '    <th style="width:90px;border: 1px solid #fff;padding: 16px 0;">特殊需求</th>';
-    table += '    <th style="width:100px;border: 1px solid #fff;padding: 16px 0;">緊急連絡電話</th>';
-
+    table += '    <th style="width:90px;border: 1px solid #fff;padding: 16px 0;">緊急連絡電話</th>';
+    table += '    <th style="width:80px;border: 1px solid #fff;padding: 16px 0;">連絡人</th>';
     if(payitem=="YES") {
-        table += '    <th style="width:120px;border: 1px solid #fff;padding: 16px 0;">備註</th>';
+        table += '    <th style="width:70px;border: 1px solid #fff;padding: 16px 0;">備註</th>';
         table += '  <th style="width:30px;border: 1px solid #fff;padding: 16px 0;" rowspan="2">繳費</th>';
     } else {
-        table += '    <th style="width:150px;border: 1px solid #fff;padding: 16px 0;">備註</th>';
+        table += '    <th style="width:100px;border: 1px solid #fff;padding: 16px 0;">備註</th>';
     }
     table += '    <th style="width: 20px;border: none;text-align: center;padding: 4px 0;background-color: #fff;"  rowspan="2"></th>';
     table += '  </tr>';
@@ -410,8 +412,8 @@ function showtable(data,classid,classname,area,region,classfullname) {
         for(let kk = 0; kk < vAttend.length; kk++) {
             attend_option += `<option value="${vAttend[kk].value}" ${day==vAttend[kk].value ? 'selected': ''}> ${vAttend[kk].name}</option>`;
         }
-        table += `          <td style="width: 100px;border: 1px solid #bbb;text-align: center;padding: 4px 0;">
-                                <select style="width: 90px;" id="join_${w}" class="join" idx="${row[0]}" serial="${w}" item="1" name="join${w}" ${disabledlock}>
+        table += `          <td style="width: 90px;border: 1px solid #bbb;text-align: center;padding: 4px 0;">
+                                <select style="width: 80px;" id="join_${w}" class="join" idx="${row[0]}" serial="${w}" item="1" name="join${w}" ${disabledlock}>
                                 ${attend_option}
                                 </select>
                             </td>`;
@@ -443,8 +445,8 @@ function showtable(data,classid,classname,area,region,classfullname) {
                         <option value="2" ${tfround == 2 ? 'selected' : ''}>回</option>`;
         disabledrounditem = (day) && (traff != 'Z') ? '' : ' disabled ';
 
-        table += `          <td style="width: 170px;border: 1px solid #bbb;text-align: center;padding: 4px 0;">
-                                <select style="width: 110px;" id="traffic1_${w}" class="traffic" idx="${row[0]}" serial="${w}" item="1" name="traffic${w}" ${disableditem} ${disabledlock}>
+        table += `          <td style="width: 160px;border: 1px solid #bbb;text-align: center;padding: 4px 0;">
+                                <select style="width: 100px;" id="traffic1_${w}" class="traffic" idx="${row[0]}" serial="${w}" item="1" name="traffic${w}" ${disableditem} ${disabledlock}>
                                 ${traff_option}
                                 </select>
                                 <select style="width: 50px;" id="traffic1round_${w}" class="traffic1round" idx="${row[0]}" serial="${w}" item="1" name="traffic1round${w}" ${disabledrounditem} ${disabledlock}>
@@ -470,18 +472,21 @@ function showtable(data,classid,classname,area,region,classfullname) {
                             </td>`;
 
         // 連絡電話
-        table += `          <td style="width: 100px;border: 1px solid #bbb;text-align: center;padding: 4px 0;">
-                                <input type="text" style='width:88px;' id="tel_${w}" class="tel" idx="${row[0]}" serial="${w}" value="${row[19]}">
+        table += `          <td style="width: 90px;border: 1px solid #bbb;text-align: center;padding: 4px 0;">
+                                <input type="text" style='width:78px;' id="tel_${w}" class="tel" idx="${row[0]}" serial="${w}" value="${row[19]}">
                             </td>`;
 
-
+        // 連絡人
+        table += `          <td style="width: 80px;border: 1px solid #bbb;text-align: center;padding: 4px 0;">
+                                <input type="text" style='width:60px;' id="contact_${w}" class="contact" idx="${row[0]}" serial="${w}" value="${row[20]}">
+                            </td>`;
 
 
         //繳費
         if(payitem == 'YES') {
             // 備註
-            table += `          <td style="width: 120px;border: 1px solid #bbb;text-align: center;padding: 4px 0;">
-                <input type="text" style='width:98px;' id="memo_${w}" class="memo" idx="${row[0]}" serial="${w}" value="${row[13]}">
+            table += `          <td style="width: 70px;border: 1px solid #bbb;text-align: center;padding: 4px 0;">
+                <input type="text" style='width:58px;' id="memo_${w}" class="memo" idx="${row[0]}" serial="${w}" value="${row[13]}">
             </td>`;
 
             table += `      <td style="width: 30px;border: 1px solid #bbb;text-align: center;padding: 4px 0;">
@@ -489,8 +494,8 @@ function showtable(data,classid,classname,area,region,classfullname) {
                             </td>`;
         } else {
             // 備註
-            table += `          <td style="width: 150px;border: 1px solid #bbb;text-align: center;padding: 4px 0;">
-                <input type="text" style='width:98px;' id="memo_${w}" class="memo" idx="${row[0]}" serial="${w}" value="${row[13]}">
+            table += `          <td style="width: 100px;border: 1px solid #bbb;text-align: center;padding: 4px 0;">
+                <input type="text" style='width:88px;' id="memo_${w}" class="memo" idx="${row[0]}" serial="${w}" value="${row[13]}">
             </td>`;
         }
 

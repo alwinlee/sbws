@@ -518,6 +518,73 @@
         return true;
     }
 
+    function chkPujaTB3($tbname){
+        if ($tbname==""){return false;}
+        $sql="SHOW TABLES LIKE '".$tbname."'";
+
+        $con = mysqli_connect("localhost","root","rinpoche", "bwsouthdb");
+        $result = mysqli_query($con, $sql);
+        $numrows = mysqli_num_rows($result);
+        if ($numrows>=1){
+            mysqli_close($con);
+            return true;
+        }
+
+        $sql ="CREATE TABLE IF NOT EXISTS `".$tbname."`(";
+        $sql.="`idx`           int(8) NOT NULL auto_increment,";
+        $sql.="`lock`          int(4) default 0 COMMENT '已繳費-鎖住',";
+        $sql.="`name`	       varchar(20) collate utf8_unicode_ci NOT NULL COMMENT '學員姓名',";
+        $sql.="`classname`     varchar(20) collate utf8_unicode_ci NOT NULL COMMENT '班級',";
+        $sql.="`CLS_ID`	       varchar(20)  collate utf8_unicode_ci NOT NULL COMMENT '班級ID',";
+        $sql.="`area`	       varchar(12) collate utf8_unicode_ci NOT NULL COMMENT '班級區域',";
+        $sql.="`areaid`	       varchar(12) collate utf8_unicode_ci NOT NULL COMMENT '班級區域ID',";
+        $sql.="`title`	       varchar(12) collate utf8_unicode_ci NOT NULL COMMENT '學員職稱',";
+        $sql.="`TTL_ID`	       varchar(4) collate utf8_unicode_ci NOT NULL COMMENT '學員職稱',";
+        $sql.="`titleid`	   int(4) default 0 COMMENT '學員類別 8:班長 7:副班長 6:關懷員 4:班長班員 3:副班長班員 2:關懷員班員 1:一般班員 0:暫停班員',";
+        $sql.="`STU_ID`	       varchar(12) collate utf8_unicode_ci NOT NULL COMMENT '學員代號',";
+        $sql.="`staffid`	   varchar(12) collate utf8_unicode_ci COMMENT '職員代號',";
+        $sql.="`sex`	       varchar(2) collate utf8_unicode_ci COMMENT '性別',";
+        $sql.="`age`	       date default '1970-01-01' COMMENT '年齡',";
+        $sql.="`edu`	       varchar(20) collate utf8_unicode_ci NOT NULL COMMENT '學歷',";
+        $sql.="`school`	       varchar(60) collate utf8_unicode_ci NOT NULL COMMENT '學校',";
+        $sql.="`jobtype`	   varchar(40) collate utf8_unicode_ci NOT NULL COMMENT '職業別',";
+        $sql.="`company`	   varchar(80) collate utf8_unicode_ci NOT NULL COMMENT '公司',";
+        $sql.="`jobtitle`	   varchar(80) collate utf8_unicode_ci NOT NULL COMMENT '職稱',";
+        $sql.="`PhoneNo_H`     varchar(20) collate utf8_unicode_ci NOT NULL COMMENT '電話(宅)',";
+        $sql.="`PhoneNo_C`     varchar(20) collate utf8_unicode_ci NOT NULL COMMENT '電話(手機)',";
+        $sql.="`memberseq`     int(8) default 0 COMMENT '排序',";
+        $sql.="`day`           int(8) default 0 COMMENT '參加第幾天87654321',";
+        $sql.="`meal`          int(8) default 0 COMMENT '代訂便當87654321',";
+        $sql.="`family`        int(8) default 0 COMMENT '眷屬參加人數',";
+        $sql.="`service`       int(8) default 0 COMMENT '是否為義工',";
+        $sql.="`traff`         varchar(12) collate utf8_unicode_ci NOT NULL COMMENT '搭車方式-逗點分隔',";
+        $sql.="`traffCnt`      int(4) default 0 COMMENT '0:來回, 1:單去,2:單回',";
+        $sql.="`traffReal`     varchar(12) collate utf8_unicode_ci NOT NULL COMMENT '搭車方式-逗點分隔',";
+        $sql.="`traffRealCnt`  int(4) default 0 COMMENT '0:來回, 1:單去,2:單回',";
+        $sql.="`cost`          int(4) default 0 COMMENT '車資',";
+        $sql.="`pay`           int(4) default 0 COMMENT '繳費',";
+        $sql.="`attend`        int(4) default 0 COMMENT '報到',";
+        $sql.="`regdate`       date default '1970-01-01' COMMENT '報名日期',";
+        $sql.="`paydate`       date default '1970-01-01' COMMENT '繳費日期',";
+        $sql.="`payround`      int(8) default 0 COMMENT '第幾次繳費',";
+        $sql.="`paybyid`	   varchar(8) collate utf8_unicode_ci COMMENT 'id',";
+        $sql.="`paybyname`     varchar(20) collate utf8_unicode_ci COMMENT 'name',";
+        $sql.="`memo`	       varchar(80) collate utf8_unicode_ci COMMENT '備註',";
+        $sql.="`leaderinfo`    varchar(255) collate utf8_unicode_ci COMMENT '擔任班幹部資訊',";
+        $sql.="`volunteerinfo` varchar(200) collate utf8_unicode_ci COMMENT '擔任義工資訊',";
+        $sql.="`otherinfo`     varchar(120) collate utf8_unicode_ci COMMENT '其他額外資訊',";// 幹部母班....
+        $sql.="`classfullname` varchar(20) collate utf8_unicode_ci COMMENT  '班級全名',";// 幹部母班....
+        $sql.="`specialcase`   int(8) default 0 COMMENT '住宿特殊需求',";
+        $sql.="`tel`           varchar(120) collate utf8_unicode_ci COMMENT '緊急連絡電話',";
+        $sql.="`contact`       varchar(120) collate utf8_unicode_ci COMMENT '連絡人',";
+        $sql.="PRIMARY KEY  (`idx`)";
+        $sql.=")ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=32;";
+
+        //echo $sql;
+        $sql_result=mysqli_query($con, $sql);
+        mysqli_commit($con);
+        return true;
+    }
 
     function chkPujaTBex($tbname){
         if ($tbname==""){return false;}

@@ -139,8 +139,8 @@
               "AA","AB","AC","AD","AE","AF","AG","AH","AI","AJ","AK","AL","AM","AN","AO","AP","AQ","AR","AS","AT","AU","AV","AW","AX","AY","AZ",
               "BA","BB","BC","BD","BE","BF","BG","BH","BI","BJ","BK","BL","BM","BN","BO","BP","BQ","BR","BS","BT","BU","BV","BW","BX","BY","BZ",
               "CA","CB","CC","CD","CE","CF","CG","CH","CI","CJ","CK","CL","CM","CN","CO","CP","CQ","CR","CS","CT","CU","CV","CW","CX","CY","CZ");
-    $xlstitle=array("序號","班級","班級職稱","學員代號","姓名","性別","年齡","學歷","電話(宅)","電話(公)","參加梯次","預計搭車","確認搭車","車資","特殊需求","緊急連絡電話","備註");
-    $xlstitleW=array(8,21,10,12,10,6,6,8,16,16,12,10,10,10,16,16,16);
+    $xlstitle=array("序號","班級","班級職稱","學員代號","姓名","性別","年齡","學歷","電話(宅)","電話(公)","參加梯次","預計搭車","確認搭車","車資","特殊需求","緊急連絡電話","連絡人","備註");
+    $xlstitleW=array(8,21,10,12,10,6,6,8,16,16,12,10,10,10,16,16,16,16);
     $dateCurr=date('Y');
     $jobtype=array('V00'=>'-','V01'=>'教育','V02'=>'醫護','V03'=>'公職','V04'=>'農業','V05'=>'工業','V06'=>'建築業','V07'=>'商業','V08'=>'服務業','V09'=>'軍警','V10'=>'自由業','V11'=>'學生','V12'=>'家管','V13'=>'無','V14'=>'退休','V99'=>'其他');
     $edutype=array('D0'=>'-','D1'=>'國小','D2'=>'國中','D3'=>'高中職','D4'=>'專科','D5'=>'大學','D6'=>'碩士','D7'=>'博士','D8'=>'不識字','D9'=>'識字');
@@ -325,6 +325,7 @@
 
                      ->setCellValue($col[++$c].$iRow,$specialcase[$row["specialcase"]])
                      ->setCellValue($col[++$c].$iRow,' '.$row["tel"])
+                     ->setCellValue($col[++$c].$iRow,' '.$row["contact"])
                      ->setCellValue($col[++$c].$iRow,$row["memo"])
                      ->setCellValue($col[++$c].$iRow,$row["regdate"])
                      ->setCellValue($col[++$c].$iRow,$row["pay"]>0 ? "1":"")

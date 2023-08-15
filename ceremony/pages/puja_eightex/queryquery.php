@@ -22,9 +22,9 @@
     $findleaderinfo=($leaderinfo=="YES" ? true:false);
     $findvolunteerinfo=($volunteerinfo=="YES" ? true:false);
 
-    chkPujaTB2($tbname);
-    syncLeaderPujaTB2($tbname,$classname,$classid,$area,$region,$findleaderinfo,$findvolunteerinfo,$classfullname,0);
-    syncMemberPujaTB2($tbname,$classname,$classid,$area,$region,$findleaderinfo,$findvolunteerinfo,$classfullname,0);
+    chkPujaTB3($tbname);
+    syncLeaderPujaTB3($tbname,$classname,$classid,$area,$region,$findleaderinfo,$findvolunteerinfo,$classfullname,0);
+    syncMemberPujaTB3($tbname,$classname,$classid,$area,$region,$findleaderinfo,$findvolunteerinfo,$classfullname,0);
 
     $traffdesc="*";
     if ($region>="2A" && $region<="2Z"){$traffdesc="2";}
@@ -82,10 +82,29 @@
     // 檢查建立學員報名record //$Major=="YES" => 母班報名
     //if ($Major=="YES"){$sql="select * from `bwsouthdb`.`".$tbname."` WHERE (`CLS_ID`='".$classid."' AND `titleid`<5 AND `titleid`>-8) ORDER BY titleid DESC, memberseq ASC";
     //}else{$sql="select * from `".$tbname."` WHERE (`CLS_ID`='".$classid."') ORDER BY titleid DESC, memberseq ASC";}
+
+    // if ($Major=="YES"){
+    //     $sql="select * from `bwsouthdb`.`".$tbname."` WHERE (`CLS_ID`='".$classid."' AND `titleid`>=0 ) ORDER BY titleid DESC, Sex DESC, STU_ID ASC";
+    // }else{
+    //     $sql="select * from `bwsouthdb`.`".$tbname."` WHERE (`CLS_ID`='".$classid."' AND `titleid`>=0 AND `titleid`<5) ORDER BY Sex DESC, STU_ID ASC";
+    // }
+
     if ($Major=="YES"){
-        $sql="select * from `bwsouthdb`.`".$tbname."` WHERE (`CLS_ID`='".$classid."' AND `titleid`>=0 ) ORDER BY titleid DESC, Sex DESC, STU_ID ASC";
-    }else{
-        $sql="select * from `bwsouthdb`.`".$tbname."` WHERE (`CLS_ID`='".$classid."' AND `titleid`>=0 AND `titleid`<5) ORDER BY Sex DESC, STU_ID ASC";
+        $sql = " select A.* from ( ";
+        $sql .= "    select * ";
+        $sql .= "    from `bwsouthdb`.`".$tbname."` ";
+        $sql .= "    where (`CLS_ID`='".$classid."' AND `titleid`>=0) ";
+        $sql .= ") AS A JOIN `bwsouthdb`.`eight_m1` AS B ON (A.CLS_ID = B.CLS_ID AND A.STU_ID = B.STU_ID)";
+        $sql .= "ORDER BY A.titleid DESC, A.Sex DESC, A.STU_ID ASC;";
+        // $sql="select * from `bwsouthdb`.`".$tbname."` WHERE (`CLS_ID`='".$classid."' AND `titleid`>=0 AND `titleid`<5) ORDER BY titleid DESC, Sex DESC, STU_ID ASC";
+    } else {
+        $sql = " select A.* from ( ";
+        $sql .= "    select * ";
+        $sql .= "    from `bwsouthdb`.`".$tbname."` ";
+        $sql .= "    where (`CLS_ID`='".$classid."' AND `titleid` >= 0 AND `titleid`<5) ";
+        $sql .= ") AS A JOIN `bwsouthdb`.`eight_m1` AS B ON (A.CLS_ID = B.CLS_ID AND A.STU_ID = B.STU_ID)";
+        $sql .= "ORDER BY A.titleid DESC, A.Sex DESC, A.STU_ID ASC;";
+        //$sql="select * from `bwsouthdb`.`".$tbname."` WHERE (`CLS_ID`='".$classid."' AND `titleid`>=0 ) ORDER BY titleid DESC, Sex DESC, STU_ID ASC";
     }
 
     $sql_result = mysqli_query($con, $sql);
@@ -96,7 +115,7 @@
         $data.=($row["idx"]."|".$row["lock"]."|".$row["name"]."|".$row["title"]."|".$row["day"]."|".$row["meal"]."|");
         $data.=($row["traff"]."|".$row["cost"]."|".$row["pay"]."|".$row["regdate"]."|".$row["paydate"]."|");
         $data.=($row["paybyid"]."|".$row["paybyname"]."|".$row["memo"]."|".$row["titleid"])."|".$row["traffCnt"]."|".$row["service"]."|".$row["otherinfo"]."|";
-        $data.=($row["specialcase"]."|".$row["tel"]).";";
+        $data.=($row["specialcase"]."|".$row["tel"]."|".$row["contact"]).";";
     }
     $result=$data;
     echo $result;
